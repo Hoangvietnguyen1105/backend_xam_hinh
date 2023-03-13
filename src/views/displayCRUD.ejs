@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>HTML Table</h2>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>first name</th>
+    <th>last name</th>
+    <th>password</th>
+    <th>email</th>
+    <th>action</th>
+  </tr>
+    <%
+    for(let i = 0; i < data.length; i++){%>
+        <tr>
+            <th><%=data[i].id%></th>
+            <th><%=data[i].firstName%></th>
+            <th><%=data[i].lastName%></th>
+            <th><%=data[i].password%></th>
+            <th><%=data[i].email%></th>
+            <th><a href="/edit-crud?id=<%= data[i].id %>" type="button" class="btn-edit">edit</a>
+                <a href="/delete-crud?id=<%= data[i].id %>" type="button" class="btn-delete">delete</a>
+            </th>
+          </tr>
+    <%}%>
+   
+</table>
+
+</body>
+</html>
+
