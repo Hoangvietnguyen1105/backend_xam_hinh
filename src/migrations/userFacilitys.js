@@ -2,30 +2,44 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    // id:DataTypes.STRING,
     // firstName: DataTypes.STRING,
     // lastName: DataTypes.STRING,
     // email: DataTypes.STRING,
     // address:DataTypes.STRING,
     // gender:DataTypes.BOOLEAN,
-    // phonenumber:DataTypes.STRING,
-    // roleid:DataTypes.STRING,
-    await queryInterface.createTable('Allcodes', {
+    // phoneNumber:DataTypes.STRING,
+    // type:DataTypes.STRING,
+    // key:DataTypes.STRING,
+    await queryInterface.createTable('userFacilitys', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      key:{
-        type: Sequelize.STRING
+      userId:{
+        type:Sequelize.INTEGER,
+        references: {
+            model: 'users',
+            key: 'id'
+          },
+          onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
-      type:{
-        type: Sequelize.STRING
+      facilityId:{
+        type:Sequelize.INTEGER,
+        references:{
+            model:'facilitys',
+            key:'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
-      value:{
-        type: Sequelize.STRING
-      },
+     
+     
+      
+      
+      
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -37,6 +51,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Allcodes');
+    await queryInterface.dropTable('userFacilitys');
   }
 };

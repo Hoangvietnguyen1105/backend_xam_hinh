@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "123456789",
-    "database": "hoc_node",
+    "database": "dat_lich_xam",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "timezone":"+07:00",

@@ -10,35 +10,35 @@ module.exports = {
     // phoneNumber:DataTypes.STRING,
     // type:DataTypes.STRING,
     // key:DataTypes.STRING,
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('facilitys', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      address: {
         type: Sequelize.STRING
       },
-      date:{
+      des:{
         type:Sequelize.STRING
       },
-      phoneNumber:{
-        type:Sequelize.STRING
+      manager:{
+        type:Sequelize.INTEGER,
+        references: {
+          model: 'users',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
       },
-      email: {
+      status: {
         type: Sequelize.STRING
       },
-      password:{
+      img:{
         type:Sequelize.STRING
       },
-      role:{
-        type:Sequelize.STRING
-      },
-      status:{
-        type:Sequelize.STRING
-      },
-      
+     
      
       
       
@@ -54,6 +54,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('facilitys');
   }
 };

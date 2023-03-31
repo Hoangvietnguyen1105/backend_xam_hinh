@@ -10,35 +10,41 @@ module.exports = {
     // phoneNumber:DataTypes.STRING,
     // type:DataTypes.STRING,
     // key:DataTypes.STRING,
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('calendars', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
+      userId1:{
+        type:Sequelize.INTEGER,
+        references: {
+            model: 'users',
+            key: 'id'
+          },
+          onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
-      date:{
-        type:Sequelize.STRING
+      userId2:{
+        type:Sequelize.INTEGER,
+        references: {
+            model: 'users',
+            key: 'id'
+          },
+          onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
-      phoneNumber:{
-        type:Sequelize.STRING
+      facilityId:{
+        type:Sequelize.INTEGER,
+        references:{
+            model:'facilitys',
+            key:'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
-      email: {
-        type: Sequelize.STRING
-      },
-      password:{
-        type:Sequelize.STRING
-      },
-      role:{
-        type:Sequelize.STRING
-      },
-      status:{
-        type:Sequelize.STRING
-      },
-      
+     
      
       
       
@@ -54,6 +60,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('calendars');
   }
 };

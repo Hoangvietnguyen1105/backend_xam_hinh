@@ -1,27 +1,38 @@
-
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    // address: DataTypes.STRING,
-    // description:DataTypes.TEXT,
-    // img:DataTypes.STRING,
-    await queryInterface.createTable('Clinics', {
+    // firstName: DataTypes.STRING,
+    // lastName: DataTypes.STRING,
+    // email: DataTypes.STRING,
+    // address:DataTypes.STRING,
+    // gender:DataTypes.BOOLEAN,
+    // phoneNumber:DataTypes.STRING,
+    // type:DataTypes.STRING,
+    // key:DataTypes.STRING,
+    await queryInterface.createTable('tattoos', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      address: {
+      
+      des:{
+        type:Sequelize.STRING
+      },
+      
+      status: {
         type: Sequelize.STRING
       },
-      description: {
-        type: Sequelize.TEXT
+      img:{
+        type:Sequelize.STRING
       },
-      img: {
-        type: Sequelize.STRING
-      },
+     
+     
+      
+      
+      
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -33,6 +44,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Clinics');
+    await queryInterface.dropTable('tattoos');
   }
 };
